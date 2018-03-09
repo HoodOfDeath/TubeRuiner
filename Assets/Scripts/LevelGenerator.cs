@@ -7,7 +7,7 @@ public class LevelGenerator : MonoBehaviour
     public GameObject tunnelPrefab;
     public GameObject firstTunnel;
 
-    const int startTunnelCount = 40;
+    const int startTunnelCount = 10;
 
     public Transform[] tunnels = new Transform[startTunnelCount];
 
@@ -44,7 +44,7 @@ public class LevelGenerator : MonoBehaviour
 
     }
 
-    // Use this for initialization
+    ///Initialization of tunnel
     void Start ()
     {
         tunnels[0] = firstTunnel.transform;
@@ -52,11 +52,5 @@ public class LevelGenerator : MonoBehaviour
         {
             GenerateNewTunnel();
         }
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
 	}
 }
