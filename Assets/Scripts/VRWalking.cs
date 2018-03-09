@@ -6,7 +6,6 @@ public class VRWalking : MonoBehaviour
 {
     public Transform vrCamera;
     public float speed = 1;
-    float z = 0;
     bool moveForward = false;
     RaycastHit hit;
 

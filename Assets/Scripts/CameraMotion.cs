@@ -17,10 +17,10 @@ public class CameraMotion : MonoBehaviour
 	
 	void Update ()
     {
-        CameraMove1();
+        CameraMove();
 	}
 
-    void CameraMove1()
+    void CameraMove()
     {
         moveVector = Target.position + startPosition;
         moveVector.x = 0;
