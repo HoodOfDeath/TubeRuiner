@@ -22,10 +22,11 @@ public class Player : MonoBehaviour
 	void Update ()
     {
         /// Rotation of player
-        transform.Rotate(Vector3.forward * Time.deltaTime * Input.GetAxis("Horizontal") * rotationSpeed);
+        //transform.Rotate(Vector3.forward * Time.deltaTime * Input.GetAxis("Horizontal") * rotationSpeed);
 
         ///Movement towards next segment of tunnel
         Transform targetTunnel;
+        
         if (levelGenerator.currentTunnelIndex<levelGenerator.tunnels.Length-1)
         {
             targetTunnel = levelGenerator.tunnels[levelGenerator.currentTunnelIndex + 1];
@@ -33,10 +34,10 @@ public class Player : MonoBehaviour
         else
         {
             targetTunnel = levelGenerator.tunnels[0];
-        }
+        } /*
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, targetTunnel.position, step);
-        speed += speedAdd * Time.deltaTime;
+        speed += speedAdd * Time.deltaTime; */
 
         ///When reach tunnel's segment generate new at the end
         if (transform.position==targetTunnel.position)

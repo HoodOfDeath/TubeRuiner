@@ -7,11 +7,11 @@ public class LevelGenerator : MonoBehaviour
     public GameObject tunnelPrefab;
     public GameObject firstTunnel;
 
-    const int startTunnelCount = 10;
+    const int startTunnelCount = 40;
 
     public Transform[] tunnels = new Transform[startTunnelCount];
 
-    float zOffset = 2.1f;
+    float zOffset = 2.1f * 2;
 
     public int currentTunnelIndex = 1;
 
