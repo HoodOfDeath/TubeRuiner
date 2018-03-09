@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public LevelGenerator levelGenerator;
+    /*public LevelGenerator levelGenerator;
 
     public float speed = 3f;
     public float speedAdd = 0.1f;
@@ -44,5 +44,5 @@ public class Player : MonoBehaviour
             targetTunnelIndex++;
             levelGenerator.GenerateNewTunnel();
         }
-    }
+    }//*/
 }
