@@ -6,9 +6,10 @@ public class VRWalking : MonoBehaviour
 {
     public Transform vrCamera;
     private Camera MainCamera;
-    public float speed = 1;
+    public float Speed = 1f;
+    public float XYSpeed = 5f;
     public bool mod = true;
-    bool moveForward = false;
+    bool moveForward = true;
     RaycastHit hit;
     Mod currentMod;
 
@@ -25,38 +26,44 @@ public class VRWalking : MonoBehaviour
         {
             currentMod = Engage;
         }
-        MainCamera = Camera.main;
+        //MainCamera = Camera.main;
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
             moveForward = !moveForward;
-        currentMod(moveForward, speed);
+        currentMod(moveForward, Speed);
     }
 
-    delegate void Mod(bool moveForvard, float speed);
+    delegate void Mod(bool moveForvard, float Speed);
 
-    void Engage(bool moveForvard, float speed)
+    void Engage(bool moveForvard, float Speed)
     {
         if (moveForward)
         {
             Vector3 gaze = vrCamera.TransformDirection(Vector3.forward);
-            Player.Move(gaze * speed * Time.deltaTime);
+            Player.Move(gaze * Speed * Time.deltaTime);
         }
     }
 
     Vector3 PlayerPositionZ = new Vector3(0, 0, 0);
-    void MoveBySight(bool moveForvard, float speed)
+    Vector2 g;
+    Vector2 PlayerPositionXY;
+    void MoveBySight(bool moveForvard, float Speed)
     {
         if (moveForvard)
         {
             Vector3 gaze = vrCamera.TransformDirection(Vector3.forward);
-            Physics.Raycast(vrCamera.transform.position, gaze, out hit, 20.0f);
-            Vector2 g = hit.point;
-            Vector2 PlayerPositionXY = Player.transform.position;
-            PlayerPositionZ += Vector3.forward * speed * Time.deltaTime;
-            Player.transform.position = Vector3.MoveTowards(PlayerPositionXY, g, speed * Time.deltaTime) + PlayerPositionZ;
+            if( Physics.Raycast(vrCamera.transform.position, gaze, out hit, 20.0f))
+            if( hit.collider.tag == "PlayersController" | hit.collider.tag == "Player")
+            {
+                g = new Vector2( hit.point.x, hit.point.y);
+            }
+            PlayerPositionXY = Player.transform.position;
+            PlayerPositionZ += Vector3.forward * Speed * Time.deltaTime;
+            Player.transform.position = Vector3.MoveTowards(PlayerPositionXY, g, Speed * Time.deltaTime) + PlayerPositionZ;
+            Debug.Log(g);
         }
     }
 }
