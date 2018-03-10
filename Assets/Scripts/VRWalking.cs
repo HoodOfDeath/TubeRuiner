@@ -5,7 +5,6 @@ using UnityEngine;
 public class VRWalking : MonoBehaviour
 {
     public Transform vrCamera;
-    private Camera MainCamera;
     public float speed = 1;
     public bool mod = true;
     bool moveForward = false;
@@ -25,7 +24,6 @@ public class VRWalking : MonoBehaviour
         {
             currentMod = Engage;
         }
-        MainCamera = Camera.main;
     }
 
     void Update()
