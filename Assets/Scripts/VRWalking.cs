@@ -5,25 +5,37 @@ using UnityEngine;
 public class VRWalking : MonoBehaviour
 {
     public Transform vrCamera;
+    private Camera MainCamera;
     public float speed = 1;
+    public bool mod = true;
     bool moveForward = false;
     RaycastHit hit;
+    Mod currentMod;
 
     private CharacterController Player;
 
     void Start()
     {
         Player = GetComponent<CharacterController>();
+        if (mod)
+        {
+            currentMod = MoveBySight;
+        }
+        else
+        {
+            currentMod = Engage;
+        }
+        MainCamera = Camera.main;
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
             moveForward = !moveForward;
-        //Engage(moveForward, speed);
-        MoveBySight(moveForward, speed);
-        //MoveBySight2(moveForward, speed);
+        currentMod(moveForward, speed);
     }
+
+    delegate void Mod(bool moveForvard, float speed);
 
     void Engage(bool moveForvard, float speed)
     {
@@ -34,34 +46,17 @@ public class VRWalking : MonoBehaviour
         }
     }
 
+    Vector3 PlayerPositionZ = new Vector3(0, 0, 0);
     void MoveBySight(bool moveForvard, float speed)
     {
         if (moveForvard)
         {
             Vector3 gaze = vrCamera.TransformDirection(Vector3.forward);
             Physics.Raycast(vrCamera.transform.position, gaze, out hit, 20.0f);
-            Vector3 g = hit.point;
-            g.z += 1;
-            Player.transform.position = Vector3.MoveTowards(Player.transform.position, g, speed * Time.deltaTime);
+            Vector2 g = hit.point;
+            Vector2 PlayerPositionXY = Player.transform.position;
+            PlayerPositionZ += Vector3.forward * speed * Time.deltaTime;
+            Player.transform.position = Vector3.MoveTowards(PlayerPositionXY, g, speed * Time.deltaTime) + PlayerPositionZ;
         }
     }
-
-    void MoveBySight2(bool moveForvard, float speed)
-    {
-        if (moveForvard)
-        {
-            Vector3 gaze = vrCamera.TransformDirection(Vector3.forward);
-            Physics.Raycast(vrCamera.transform.position, gaze, out hit, 20.0f);
-            Vector3 g = hit.point;
-            g.z = 0;
-            g.y = 0;
-            //Player.transform.position = Vector3.MoveTowards(Player.transform.position, g, speed * Time.deltaTime);
-            Vector3 g1 = Vector3.MoveTowards(Player.transform.position, g, speed * Time.deltaTime);
-            g1.z = 0;
-            Player.Move(Vector3.forward * speed * Time.deltaTime + g * Time.deltaTime);
-        }
-    }
-
-
-
 }

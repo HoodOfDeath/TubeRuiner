@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vrCamera: {fileID: 1496180436}
-  speed: 1
+  speed: 5
 --- !u!143 &1820398884
 CharacterController:
   m_ObjectHideFlags: 0
