@@ -203,8 +203,10 @@ GameObject:
   m_Component:
   - component: {fileID: 402158055}
   - component: {fileID: 402158054}
+  - component: {fileID: 402158057}
+  - component: {fileID: 402158056}
   m_Layer: 0
-  m_Name: LevelGenerator
+  m_Name: LevelManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,24 +220,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 402158053}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b50b7329f5b127a4f9991003efa1b3aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bfd29b599e8e2b42b9e98b698449415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tunnelPrefab: {fileID: 1830747677042312, guid: ceb19d2f13782e44696779a228097bd1,
-    type: 2}
-  firstTunnel: {fileID: 1280637097}
-  tunnels:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  currentTunnelIndex: 1
+  TubeGenerator: {fileID: 402158056}
+  FirstTunnel: {fileID: 1862099996}
+  ObstacleGenerator: {fileID: 402158057}
+  Player: {fileID: 1505894093}
 --- !u!4 &402158055
 Transform:
   m_ObjectHideFlags: 0
@@ -249,6 +240,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &402158056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 402158053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c14c8480d99fdaf4294eb41f6e1228a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tunnelPrefab: {fileID: 1830747677042312, guid: ceb19d2f13782e44696779a228097bd1,
+    type: 2}
+--- !u!114 &402158057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 402158053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44e2757e4649eb40ab01d4bb1ab0d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrashPrefab: {fileID: 1275127663604178, guid: fbf020a505d9cf64b9707b2faf9a6a2d,
+    type: 2}
 --- !u!1001 &1024680097
 Prefab:
   m_ObjectHideFlags: 0
@@ -266,7 +283,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4334819584571138, guid: ceb19d2f13782e44696779a228097bd1, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: 4334819584571138, guid: ceb19d2f13782e44696779a228097bd1, type: 2}
       propertyPath: m_LocalRotation.x
@@ -297,14 +314,29 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 64958995018571266, guid: ceb19d2f13782e44696779a228097bd1,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64958995018571266, guid: ceb19d2f13782e44696779a228097bd1,
+        type: 2}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64795743579706076, guid: ceb19d2f13782e44696779a228097bd1,
+        type: 2}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64795743579706076, guid: ceb19d2f13782e44696779a228097bd1,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ceb19d2f13782e44696779a228097bd1, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1280637097 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1830747677042312, guid: ceb19d2f13782e44696779a228097bd1,
-    type: 2}
-  m_PrefabInternal: {fileID: 1024680097}
 --- !u!1 &1505894093
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,11 +435,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f9ebf0136994d40a4f6038a60e2e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelGenerator: {fileID: 402158054}
-  speed: 1
+  speed: 0.02
   speedAdd: 0.1
   rotationSpeed: 100
   targetTunnelIndex: 0
+--- !u!1 &1862099996 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1830747677042312, guid: ceb19d2f13782e44696779a228097bd1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1024680097}
 --- !u!1 &1960657426
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +528,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2118649507
 Transform:
   m_ObjectHideFlags: 0

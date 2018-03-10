@@ -4,25 +4,29 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    /*public LevelGenerator levelGenerator;
 
-    public float speed = 3f;
+    public float speed = 0.01f;
     public float speedAdd = 0.1f;
     public float rotationSpeed = 100f;
 
     public int targetTunnelIndex = 0;
 
+    /*public LevelGenerator levelGenerator;
 	// Use this for initialization
 	void Start ()
     {
 		
-	}
+	}//*/
 	
 	// Update is called once per frame
 	void Update ()
     {
-        /// Rotation of player
+        Vector3 currentPos = transform.position;
+        Vector3 destinationPos = new Vector3(currentPos.x, currentPos.y, currentPos.z + 2f);
+        transform.position = Vector3.MoveTowards(currentPos, destinationPos, speed); 
         transform.Rotate(Vector3.forward * Time.deltaTime * Input.GetAxis("Horizontal") * rotationSpeed);
+        /*
+        /// Rotation of player
 
         ///Movement towards next segment of tunnel
         Transform targetTunnel;
@@ -43,6 +47,6 @@ public class Player : MonoBehaviour
         {
             targetTunnelIndex++;
             levelGenerator.GenerateNewTunnel();
-        }
-    }//*/
+        }//*/
+    }
 }
