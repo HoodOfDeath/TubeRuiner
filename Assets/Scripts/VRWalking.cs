@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class VRWalking : MonoBehaviour
 {
-    public Transform vrCamera;
     public float speed = 1;
     public bool mod = true;
     bool moveForward = false;
     RaycastHit hit;
     Mod currentMod;
+    Camera MainCam;
 
     private CharacterController Player;
 
@@ -24,6 +24,7 @@ public class VRWalking : MonoBehaviour
         {
             currentMod = Engage;
         }
+        MainCam = Camera.main;
     }
 
     void Update()
@@ -39,8 +40,8 @@ public class VRWalking : MonoBehaviour
     {
         if (moveForward)
         {
-            Vector3 gaze = vrCamera.TransformDirection(Vector3.forward);
-            Player.Move(gaze * speed * Time.deltaTime);
+            Vector3 gaze = MainCam.transform.forward * speed * Time.deltaTime;
+            Player.Move(gaze);
         }
     }
 
@@ -49,8 +50,8 @@ public class VRWalking : MonoBehaviour
     {
         if (moveForvard)
         {
-            Vector3 gaze = vrCamera.TransformDirection(Vector3.forward);
-            Physics.Raycast(vrCamera.transform.position, gaze, out hit, 20.0f);
+            Vector3 gaze = MainCam.transform.forward;
+            Physics.Raycast(MainCam.transform.position, gaze, out hit, 20.0f);
             Vector2 g = hit.point;
             Vector2 PlayerPositionXY = Player.transform.position;
             PlayerPositionZ += Vector3.forward * speed * Time.deltaTime;
