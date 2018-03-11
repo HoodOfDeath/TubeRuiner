@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour
     GameObject currentTunnel;
     GameObject currentObstacle;
     int tunnelsPassed = 0;
-    float liveTime = 1f;
+    float liveTime = 1.5f;
 
 	void Start ()
     {
@@ -27,15 +27,14 @@ public class LevelManager : MonoBehaviour
         playerDestination = FirstTunnel.transform.position;
         currentSectionPos = FirstTunnel.transform.position;
         currentRotation = FirstTunnel.transform.rotation;
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 40; i++)
         {
             currentSectionPos.z += zOffset;
             currentTunnel = TubeGenerator.Generate(currentSectionPos, currentRotation);
             Destroy(currentTunnel, liveTime);
-            liveTime += 1f;
+            liveTime += 0.75f;
         }
         Destroy(FirstTunnel, 1f);
-        liveTime = 10f;
     }
 
 	void Update ()
