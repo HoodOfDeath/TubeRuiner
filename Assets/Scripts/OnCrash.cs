@@ -3,12 +3,12 @@ using UnityEngine.UI;
 
 public class OnCrash : MonoBehaviour
 {
-    public Collider trash;
+    public Collider Player;
     public Text Message;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != trash.tag )
+        if (other.tag != Player.tag )
         {
             Message.text = "You Lose";
         }

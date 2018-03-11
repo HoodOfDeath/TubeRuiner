@@ -19,6 +19,11 @@ public class LevelManager : MonoBehaviour
 
 	void Start ()
     {
+        InitialTunnel();
+    }
+
+    void InitialTunnel()
+    {
         playerDestination = FirstTunnel.transform.position;
         currentSectionPos = FirstTunnel.transform.position;
         currentRotation = FirstTunnel.transform.rotation;
@@ -31,9 +36,14 @@ public class LevelManager : MonoBehaviour
         }
         Destroy(FirstTunnel, 1f);
         liveTime = 10f;
-	}
+    }
 
 	void Update ()
+    {
+        CreateTunnelSection();
+    }
+
+    void CreateTunnelSection()
     {
         if (Player.transform.position.z >= playerDestination.z)
         {
@@ -49,5 +59,5 @@ public class LevelManager : MonoBehaviour
                 Destroy(currentObstacle, liveTime);
             }
         }
-	}
+    }
 }
