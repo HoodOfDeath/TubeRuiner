@@ -23,8 +23,8 @@ public class CameraMotion : MonoBehaviour
     void CameraMove()
     {
         moveVector = Target.position + startPosition;
-        moveVector.x = 0;
-        moveVector.y = 2.5f;
+        moveVector.x = 0f;
+        moveVector.y = 0f;
 
         transform.position = moveVector;
     }

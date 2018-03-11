@@ -206,7 +206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &912611238
 Transform:
   m_ObjectHideFlags: 0
@@ -288,7 +288,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4334819584571138, guid: ceb19d2f13782e44696779a228097bd1, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4334819584571138, guid: ceb19d2f13782e44696779a228097bd1, type: 2}
       propertyPath: m_LocalPosition.z
@@ -455,7 +455,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1496180431}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: -12.582}
+  m_LocalPosition: {x: 0, y: 0, z: -12.582}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 334726547}
@@ -517,6 +517,7 @@ GameObject:
   - component: {fileID: 1820398885}
   - component: {fileID: 1820398884}
   - component: {fileID: 1820398883}
+  - component: {fileID: 1820398889}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -535,10 +536,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525b5ab83cb79a84499a3e835893ad65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vrCamera: {fileID: 1496180436}
   Speed: 7
   XYSpeed: 20
   mod: 1
+  MainCam: {fileID: 1496180435}
 --- !u!143 &1820398884
 CharacterController:
   m_ObjectHideFlags: 0
@@ -616,13 +617,25 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1820398882}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: -3}
+  m_LocalPosition: {x: 0, y: 0, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 912611238}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1820398889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1820398882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee1d746d88bb174bb6aa5a685a82a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trash: {fileID: 1820398886}
 --- !u!1 &1960657426
 GameObject:
   m_ObjectHideFlags: 0
