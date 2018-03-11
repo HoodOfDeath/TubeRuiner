@@ -4,7 +4,7 @@ public class TrashGenerator : Generator
 {
     public GameObject TrashPrefab;
 
-    Vector3[] randVect = { new Vector3(2, 0, 0), new Vector3(-2, 0, 0), new Vector3(0, 2, 0), new Vector3(0, -2, 0), new Vector3(1.4142f, 1.4142f, 0), new Vector3(-1.4142f, 1.4142f, 0), new Vector3(1.4142f, -1.4142f, 0), new Vector3(-1.4142f, -1.4142f, 0) };
+    Vector3[] randVect = { new Vector3(2, 0, 0), new Vector3(-2, 0, 0), new Vector3(0, 2, 0), new Vector3(0, -2, 0), new Vector3(1.4142f, 1.4142f, 0), new Vector3(-1.4142f, 1.4142f, 0), new Vector3(1.4142f, -1.4142f, 0), new Vector3(-1.4142f, -1.4142f, 0), new Vector3(0,0,0) };
     Vector3 rotation = new Vector3(0, 0, 45);
 
     public override GameObject Generate(Vector3 position, Quaternion Rotation)

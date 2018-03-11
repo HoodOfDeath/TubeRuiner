@@ -11,7 +11,7 @@ public class VRWalking : MonoBehaviour
     void Start()
     {
         
-        //Player = GetComponent<CharacterController>();
+        Player = GetComponent<CharacterController>();
         MainCamera = Camera.main;
     }
 
@@ -32,15 +32,19 @@ public class VRWalking : MonoBehaviour
     }//*/
 
     Vector3 PlayerPositionZ = new Vector3(0, 0, 0);
-    Vector2 g;
-    Vector2 PlayerPositionXY;
+    Vector2 target;
+    Vector2 playerPositionXY;
+    Vector2 movementXY;
     void MoveBySight(float Speed)
     {
+
         Vector3 gaze = MainCamera.transform.forward;
-        g = new Vector2(gaze.x, gaze.y) * scale;
-        PlayerPositionXY = transform.position;
-        PlayerPositionZ += Vector3.forward * Speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(PlayerPositionXY, g, Speed * Time.deltaTime * 5) + PlayerPositionZ;
-        Debug.Log(gaze);
+        target = new Vector2(gaze.x, gaze.y) * scale;
+        playerPositionXY = transform.position;
+        //PlayerPositionZ += Vector3.forward * Speed * Time.deltaTime;
+        movementXY = (target - playerPositionXY) * Speed*Time.deltaTime;
+        Player.Move(new Vector3(movementXY.x, movementXY.y, Speed*Time.deltaTime));
+        /*transform.position = Vector3.MoveTowards(PlayerPositionXY, g, Speed * Time.deltaTime * 5) + PlayerPositionZ;
+        Debug.Log(gaze);//*/
     }
 }
