@@ -1,19 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class OnCrash : MonoBehaviour
 {
     public Collider trash;
-
-    private void Start()
-    {
-        
-    }
+    public Text Message;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag != trash.tag )
         {
-            Debug.Log("Oi fseo");
+            Message.text = "You Lose";
         }
     }
+
+
 }

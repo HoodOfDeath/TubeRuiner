@@ -17,7 +17,6 @@ public class LevelManager : MonoBehaviour
     int tunnelsPassed = 0;
     float liveTime = 1f;
 
-	// Use this for initialization
 	void Start ()
     {
         playerDestination = FirstTunnel.transform.position;
@@ -33,8 +32,7 @@ public class LevelManager : MonoBehaviour
         Destroy(FirstTunnel, 1f);
         liveTime = 10f;
 	}
-	
-	// Update is called once per frame
+
 	void Update ()
     {
         if (Player.transform.position.z >= playerDestination.z)

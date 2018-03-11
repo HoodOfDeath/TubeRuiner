@@ -41,10 +41,7 @@ public class VRWalking : MonoBehaviour
         Vector3 gaze = MainCamera.transform.forward;
         target = new Vector2(gaze.x, gaze.y) * scale;
         playerPositionXY = transform.position;
-        //PlayerPositionZ += Vector3.forward * Speed * Time.deltaTime;
         movementXY = (target - playerPositionXY) * Speed*Time.deltaTime;
         Player.Move(new Vector3(movementXY.x, movementXY.y, Speed*Time.deltaTime));
-        /*transform.position = Vector3.MoveTowards(PlayerPositionXY, g, Speed * Time.deltaTime * 5) + PlayerPositionZ;
-        Debug.Log(gaze);//*/
     }
 }
