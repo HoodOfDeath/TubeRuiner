@@ -32,9 +32,9 @@ public class LevelManager : MonoBehaviour
             currentSectionPos.z += zOffset;
             currentTunnel = TubeGenerator.Generate(currentSectionPos, currentRotation);
             Destroy(currentTunnel, liveTime);
-            liveTime += 0.75f;
+            liveTime += 0.425f;
         }
-        Destroy(FirstTunnel, 1f);
+        Destroy(FirstTunnel, 1.5f);
     }
 
 	void Update ()
