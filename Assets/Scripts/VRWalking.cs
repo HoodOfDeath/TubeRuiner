@@ -31,13 +31,14 @@ public class VRWalking : MonoBehaviour
         }
     }//*/
 
-    Vector3 PlayerPositionZ = new Vector3(0, 0, 0);
-    Vector2 target;
-    Vector2 playerPositionXY;
-    Vector2 movementXY;
-    void MoveBySight(float Speed)
+    Vector3 PlayerPositionZ = new Vector3(0, 0, 0); // Если не используете, удалите
+    Vector2 target; // переменную можно мделать локальной, переместить в метод
+    Vector2 playerPositionXY; // также как и с target
+    Vector2 movementXY;  // также как и с target
+    void MoveBySight(float Speed) // переменная Speed глобальная, передавать ее как параметр не нужно
     {
 
+        // В принципе тут все норм, если это работает. 
         Vector3 gaze = MainCamera.transform.forward;
         target = new Vector2(gaze.x, gaze.y) * scale;
         playerPositionXY = transform.position;
