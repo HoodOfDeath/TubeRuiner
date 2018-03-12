@@ -5,13 +5,13 @@ using UnityEngine;
 public class CameraMotion : MonoBehaviour
 {
     public Transform Target;
-    private Vector3 startPosition;
+    private Vector3 cameraPosition;
     private Vector3 moveVector;
 
 
 	void Start ()
     {
-        startPosition = transform.position - Target.position;
+        cameraPosition = transform.position - Target.position;
 	}
 	
 	void Update ()
@@ -21,7 +21,7 @@ public class CameraMotion : MonoBehaviour
 
     void CameraMove()
     {
-        moveVector = Target.position + startPosition;
+        moveVector = Target.position + cameraPosition;
         moveVector.x = 0f;
         moveVector.y = 0f;
 
