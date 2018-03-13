@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class CameraMotion : MonoBehaviour
 {
-    public Transform Target;
+    private Transform Target;
     private Vector3 startPosition;
     private Vector3 moveVector;
 
 
 	void Start ()
     {
+        Target = GameObject.FindGameObjectWithTag("Player").transform;
         startPosition = transform.position - Target.position;
 	}
 	
